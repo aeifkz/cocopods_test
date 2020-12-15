@@ -1,5 +1,5 @@
 //
-//  JSONModelLib.h
+//  NSArray+JSONModel.h
 //
 //  @version 1.0.0
 //  @author Marin Todorov, http://www.touch-code-magazine.com
@@ -14,22 +14,27 @@
 //
 // The MIT License in plain English: http://www.touch-code-magazine.com/JSONModel/MITLicense
 
+
 #import <Foundation/Foundation.h>
-
-//JSONModel transformations
-#import "JSONValueTransformer.h"
-#import "JSONKeyMapper.h"
-
-//basic JSONModel classes
-#import "JSONModelError.h"
-#import "JSONModelClassProperty.h"
 #import "JSONModel.h"
 
-//network classes
-#import "JSONHTTPClient.h"
-#import "JSONModel+networking.h"
-#import "JSONAPI.h"
+/**
+ * Exposes invisible JSONModelArray methods
+ */
+@interface NSArray(JSONModel)
 
-//models array
-#import "NSArray+JSONModel.h"
-#import "JSONModelArray.h"
+/**
+ * Looks up the array's contents and tries to find a JSONModel object
+ * with matching index property value to the indexValue param.
+ * 
+ * Will return nil if no matching model is found. Will return nil if there's no index property 
+ * defined on the models found in the array (will sample the first object, assuming the array 
+ * contains homogenous collection of objects)
+ *
+ * @param indexValue the id value to search for
+ * @return the found model or nil
+ * @exception NSException throws exception if you call this method on an instance, which is not actually a JSONModelArray
+ */
+- (id)modelWithIndexValue:(id)indexValue;
+
+@end

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
 
-NS_ASSUME_NONNULL_BEGIN
 
 /** Category of additions for `<FMDatabase>` class.
  
@@ -30,8 +29,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
 
  @return `int` value.
- 
- @note This is not available from Swift.
  */
 
 - (int)intForQuery:(NSString*)query, ...;
@@ -42,8 +39,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
 
  @return `long` value.
- 
- @note This is not available from Swift.
  */
 
 - (long)longForQuery:(NSString*)query, ...;
@@ -54,8 +49,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
 
  @return `BOOL` value.
- 
- @note This is not available from Swift.
  */
 
 - (BOOL)boolForQuery:(NSString*)query, ...;
@@ -66,8 +59,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
 
  @return `double` value.
- 
- @note This is not available from Swift.
  */
 
 - (double)doubleForQuery:(NSString*)query, ...;
@@ -78,11 +69,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
 
  @return `NSString` value.
- 
- @note This is not available from Swift.
  */
 
-- (NSString * _Nullable)stringForQuery:(NSString*)query, ...;
+- (NSString*)stringForQuery:(NSString*)query, ...;
 
 /** Return `NSData` value for query
 
@@ -90,11 +79,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
 
  @return `NSData` value.
- 
- @note This is not available from Swift.
  */
 
-- (NSData * _Nullable)dataForQuery:(NSString*)query, ...;
+- (NSData*)dataForQuery:(NSString*)query, ...;
 
 /** Return `NSDate` value for query
 
@@ -102,11 +89,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param ... A list of parameters that will be bound to the `?` placeholders in the SQL query.
 
  @return `NSDate` value.
- 
- @note This is not available from Swift.
  */
 
-- (NSDate * _Nullable)dateForQuery:(NSString*)query, ...;
+- (NSDate*)dateForQuery:(NSString*)query, ...;
 
 
 // Notice that there's no dataNoCopyForQuery:.
@@ -142,7 +127,7 @@ NS_ASSUME_NONNULL_BEGIN
  @see [SQLite File Format](http://www.sqlite.org/fileformat.html)
  */
 
-- (FMResultSet * _Nullable)getSchema;
+- (FMResultSet*)getSchema;
 
 /** The schema of the database.
 
@@ -166,7 +151,7 @@ NS_ASSUME_NONNULL_BEGIN
  @see [table_info](http://www.sqlite.org/pragma.html#pragma_table_info)
  */
 
-- (FMResultSet * _Nullable)getTableSchema:(NSString*)tableName;
+- (FMResultSet*)getTableSchema:(NSString*)tableName;
 
 /** Test to see if particular column exists for particular table in database
  
@@ -192,7 +177,7 @@ NS_ASSUME_NONNULL_BEGIN
  @warning Deprecated - use `<columnExists:inTableWithName:>` instead.
  */
 
-- (BOOL)columnExists:(NSString*)tableName columnName:(NSString*)columnName __deprecated_msg("Use columnExists:inTableWithName: instead");
+- (BOOL)columnExists:(NSString*)tableName columnName:(NSString*)columnName __attribute__ ((deprecated));
 
 
 /** Validate SQL statement
@@ -207,8 +192,10 @@ NS_ASSUME_NONNULL_BEGIN
  
  */
 
-- (BOOL)validateSQL:(NSString*)sql error:(NSError * _Nullable *)error;
+- (BOOL)validateSQL:(NSString*)sql error:(NSError**)error;
 
+
+#if SQLITE_VERSION_NUMBER >= 3007017
 
 ///-----------------------------------
 /// @name Application identifier tasks
@@ -221,16 +208,37 @@ NS_ASSUME_NONNULL_BEGIN
  @see setApplicationID:
  */
 
-@property (nonatomic) uint32_t applicationID;
+- (uint32_t)applicationID;
+
+/** Set the application ID
+
+ @param appID The `uint32_t` numeric value of the application ID.
+ 
+ @see applicationID
+ */
+
+- (void)setApplicationID:(uint32_t)appID;
 
 #if TARGET_OS_MAC && !TARGET_OS_IPHONE
-
 /** Retrieve application ID string
+
+ @return The `NSString` value of the application ID.
 
  @see setApplicationIDString:
  */
 
-@property (nonatomic, retain) NSString *applicationIDString;
+
+- (NSString*)applicationIDString;
+
+/** Set the application ID string
+
+ @param string The `NSString` value of the application ID.
+
+ @see applicationIDString
+ */
+
+- (void)setApplicationIDString:(NSString*)string;
+#endif
 
 #endif
 
@@ -240,11 +248,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** Retrieve user version
  
+ @return The `uint32_t` numeric value of the user version.
+ 
  @see setUserVersion:
  */
 
-@property (nonatomic) uint32_t userVersion;
+- (uint32_t)userVersion;
+
+/** Set the user-version
+ 
+ @param version The `uint32_t` numeric value of the user version.
+ 
+ @see userVersion
+ */
+
+- (void)setUserVersion:(uint32_t)version;
 
 @end
-
-NS_ASSUME_NONNULL_END

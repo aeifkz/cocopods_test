@@ -1,26 +1,28 @@
 PODS:
   - CorePlot (2.3)
   - EGOCache (2.0)
-  - FMDB (2.7.5):
-    - FMDB/standard (= 2.7.5)
-  - FMDB/standard (2.7.5)
+  - FMDB (2.3):
+    - FMDB/standard (= 2.3)
+  - FMDB/common (2.3)
+  - FMDB/standard (2.3):
+    - FMDB/common
   - iCarousel (1.7.6)
-  - JSONModel (1.8.0)
+  - JSONModel (1.0.0)
   - LxKeychain (1.0.0)
   - Masonry (1.0.2)
-  - MBProgressHUD (0.9.2)
+  - MBProgressHUD (0.7)
   - RegExCategories (1.0)
 
 DEPENDENCIES:
-  - CorePlot (~> 2.3)
-  - EGOCache (~> 2.0.0)
-  - FMDB (~> 2.3)
-  - iCarousel (~> 1.7.6)
-  - JSONModel (~> 1.0)
-  - LxKeychain (~> 1.0)
-  - Masonry (~> 1.0.2)
-  - MBProgressHUD (~> 0.7)
-  - RegExCategories (~> 1.0)
+  - CorePlot (= 2.3)
+  - EGOCache (= 2.0.0)
+  - FMDB (= 2.3)
+  - iCarousel (= 1.7.6)
+  - JSONModel (= 1.0)
+  - LxKeychain (= 1.0)
+  - Masonry (= 1.0.2)
+  - MBProgressHUD (= 0.7)
+  - RegExCategories (= 1.0)
 
 SPEC REPOS:
   trunk:
@@ -37,14 +39,14 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   CorePlot: 6bfe6d30d215beec3cfd18ee43e434620119bc1e
   EGOCache: 0d5f93e1e7981c5b3ecd126d6d8ee697c1b66423
-  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  FMDB: e78c5941bb10563f2b707255119e3655e790c29e
   iCarousel: ddd7f142c7c2f3429b0ce5fb8ea37f4a059394cd
-  JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
+  JSONModel: ff487c083667d8727b155c27241013cbccd17bab
   LxKeychain: 0ba0de12dd93297604652e4bb9f4e2962e28395d
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MBProgressHUD: cd75c7979a27e035d0b37e0fde9a7f2f0bc01d6f
   RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
 
-PODFILE CHECKSUM: babf0246a5fc66760cc553c99fe876b3279f6a9c
+PODFILE CHECKSUM: 9becd91193ea4c3191b83fdcea89d66c858b433e
 
 COCOAPODS: 1.10.0
